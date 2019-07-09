@@ -1,0 +1,21 @@
+/* PHASE 2: Notifications */
+
+.header-list {
+  position: relative;
+}
+
+.dropdown ul {
+  display: none;
+  white-space: normal;
+}
+.dropdown:hover ul {
+  display: block;
+}
+
+.badge {
+  border-radius: 5px;
+  margin: 50px;
+  background-color: rgb(47, 0, 255); 
+
+}
+

@@ -1,0 +1,19 @@
+<div class="center">
+
+<form class='enter-site' action="<%= users_url %>" method="post">
+<h1>Sign Up</h1>
+<br>
+<input type="hidden" name="authenticity_token" value='<%= form_authenticity_token %>'> 
+<label for="username">Username</label>
+<input type="text" name="user[username]" value="" id="username">
+<br>
+<label for="password">Password</label>
+<input type="password" name="user[password]" value="" id="password">
+<br>
+<div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+<br>
+  <input type="submit" value="Sign Up">
+  <h3>By clicking next, you agree to our Terms and that you have read our Privacy Policy and Content Policy.</h3>
+</form>
+</div>
+

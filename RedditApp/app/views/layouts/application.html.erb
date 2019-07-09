@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <title>RedditApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= favicon_link_tag asset_path('reddit.png'), :rel => 'icon', :type => 'image/png' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <a href="<%= subs_url %>"><%= image_tag("reddit.png", :alt => "rss feed") %></a>
+    
+    Reddit
+    <% if logged_in? %>
+    Hello <%= current_user.username %>!
+      <form action="<%= session_url %>" method="post">
+        <input type="hidden" name="authenticity_token" value='<%= form_authenticity_token %>'> 
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Log Out">
+      </form>
+    <% else %>
+      <a class="button" href="<%= new_session_url %>">Sign In</a>
+      <a class="button"  href="<%= new_user_url %>">Sign Up</a>
+    <% end %>
+
+<hr>
+    <%= flash[:errors] if flash[:errors] %>
+   <%= yield %>
+
+
+
+

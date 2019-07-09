@@ -1,0 +1,42 @@
+class PostsController < ApplicationController
+before_action :ensure_logged_in
+  def new
+    @post = Post.new
+  end
+
+  def create
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    # @post.sub_ids = params[:sub_ids]
+    if @post.save
+      redirect_to subs_url
+    else
+    flash.now[:errors] = @post.errors.full_messages
+    render :new
+    end
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = User.posts.find(params[:id])
+    if @post.update(post_params)
+      redirect_to subs_url
+    else
+    end
+  end
+
+  def index
+    @posts = Post.all
+  end
+
+  def show
+    @post = Post.find(params[:id])
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :url, :content, sub_ids: [] )
+  end
+end

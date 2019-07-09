@@ -1,0 +1,37 @@
+New Post
+
+
+
+<form action="<%= posts_url %>" method="post">
+<h1>Make new post</h1>
+<br>
+<input type="hidden" name="authenticity_token" value='<%= form_authenticity_token %>'> 
+<label for="username">Title</label>
+<input type="text" name="post[title]" value="" id="title">
+<br>
+<label for="password">Url</label>
+<input type="text" name="post[url]" value="" id="password">
+<label for="password">Content</label>
+<input type="text" name="post[content]" value="" id="password">
+<br>
+
+  <label>Subs</label>
+
+  <input type="hidden" name="post[sub_ids][]" value="">
+
+  <% Sub.all.each do |sub| %>
+    <br>
+    <label><%= sub.title %>
+      <input
+        type="checkbox"
+        value="<%= sub.id %>"
+        name="post[sub_ids][]"
+
+      />
+    </label>
+  <% end %>
+  <input type="submit" value="Create new Post">
+</form>
+
+
+
